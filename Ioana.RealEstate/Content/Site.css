@@ -1,0 +1,103 @@
+﻿/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.navbar label {
+    color: #999;
+    text-transform: uppercase;
+}
+
+.navbar .estate-search-placeholder {
+    padding-top: 15px;
+    display: none;
+}
+
+.navbar .navbar-nav .btn {
+    margin: 9px;
+    padding: 5px;
+}
+
+.navbar .navbar-nav .btn-success {
+    color: #fff;
+}
+
+    .navbar .navbar-nav .btn-success:hover,
+    .navbar .navbar-nav .btn-success:focus,
+    .navbar .navbar-nav .btn-success:active,
+    .navbar .navbar-nav .btn-success.active {
+        color: #fff;
+        background-color: #47a447;
+        border-color: #398439;
+    }
+
+.preview-image {
+    width: 150px;
+    height: 150px;
+    background-image: url(/content/select-image.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 5px;
+}
+
+.file-picker-panel {
+    border: 3px dashed blue;
+    padding: 0 5px;
+}
+
+    .file-picker-panel > .row > div {
+        margin: 5px 0;
+    }
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.gmap {
+    height: 400px;
+}
+
+.phone-labels-placeholder {
+    display: inline-block;
+    margin: -5px;
+}
+
+.phone-label {
+    display: inline-block;
+    border-radius: 17px;
+    padding: 6px 12px;
+    height: 34px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.phone-label i {
+    cursor: pointer;
+}
+
+.phone-input {
+    display: inline-table;
+    width: 280px;
+    margin: 5px;
+}

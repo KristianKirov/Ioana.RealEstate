@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddEstateLabel" xml:space="preserve">
+    <value>Добави имот</value>
+  </data>
+  <data name="AreaFromLabel" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="AreaLabel" xml:space="preserve">
+    <value>Площ</value>
+  </data>
+  <data name="AreaRangeErrorMessage" xml:space="preserve">
+    <value>Моля въведете положителна площ</value>
+  </data>
+  <data name="AreaToLabel" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="CityLabel" xml:space="preserve">
+    <value>Град</value>
+  </data>
+  <data name="CityRegionsLabel" xml:space="preserve">
+    <value>Райони</value>
+  </data>
+  <data name="CleanLabel" xml:space="preserve">
+    <value>Изчисти</value>
+  </data>
+  <data name="ClientsLabel" xml:space="preserve">
+    <value>Клиенти</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Експрес Имоти</value>
+  </data>
+  <data name="ConstructionStatusLabel" xml:space="preserve">
+    <value>Строителство</value>
+  </data>
+  <data name="ConstructionTypeLabel" xml:space="preserve">
+    <value>Тип строителство</value>
+  </data>
+  <data name="DocumentsLabel" xml:space="preserve">
+    <value>Документи</value>
+  </data>
+  <data name="ElevatorLabel" xml:space="preserve">
+    <value>Асансьор</value>
+  </data>
+  <data name="EstateTypesLabel" xml:space="preserve">
+    <value>Тип имот</value>
+  </data>
+  <data name="FloorFromLabel" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="FlooringTypeLabel" xml:space="preserve">
+    <value>Подовa настилкa</value>
+  </data>
+  <data name="FloorLabel" xml:space="preserve">
+    <value>Етаж</value>
+  </data>
+  <data name="FloorNaNErrorMessage" xml:space="preserve">
+    <value>Моля въведете цяло число</value>
+  </data>
+  <data name="FloorToLabel" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="FurnishingTypeLabel" xml:space="preserve">
+    <value>Обзавеждане</value>
+  </data>
+  <data name="GarageLabel" xml:space="preserve">
+    <value>Гараж</value>
+  </data>
+  <data name="HeatingInstallationsLabel" xml:space="preserve">
+    <value>Отопление</value>
+  </data>
+  <data name="HelloLabel" xml:space="preserve">
+    <value>Здравей</value>
+  </data>
+  <data name="JoineryTypeLabel" xml:space="preserve">
+    <value>Дограма</value>
+  </data>
+  <data name="LogInLabel" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="LogOffLabel" xml:space="preserve">
+    <value>Изход</value>
+  </data>
+  <data name="MultiselectPlaceholder" xml:space="preserve">
+    <value>избери</value>
+  </data>
+  <data name="NewRealEstatesLabel" xml:space="preserve">
+    <value>Нови Имоти</value>
+  </data>
+  <data name="NoLabel" xml:space="preserve">
+    <value>Не</value>
+  </data>
+  <data name="OfferIdLabel" xml:space="preserve">
+    <value>№ оферта</value>
+  </data>
+  <data name="OfferIdRangeErrorMessage" xml:space="preserve">
+    <value>Моля въведете положително цяло число</value>
+  </data>
+  <data name="OfferStatusLabel" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="OfferTypeLabel" xml:space="preserve">
+    <value>Тип на оферта</value>
+  </data>
+  <data name="ParkingLotLabel" xml:space="preserve">
+    <value>Паркинг</value>
+  </data>
+  <data name="ParkingSpotLabel" xml:space="preserve">
+    <value>Паркомясто</value>
+  </data>
+  <data name="PhoneNumberLabel" xml:space="preserve">
+    <value>Телефон на собственик</value>
+  </data>
+  <data name="PriceFromLabel" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="PriceLabel" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="PriceRangeErrorMessage" xml:space="preserve">
+    <value>Моля въведете положителна цена</value>
+  </data>
+  <data name="PriceToLabel" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="RealEstatesLabel" xml:space="preserve">
+    <value>Имоти</value>
+  </data>
+  <data name="RegisterLabel" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="ResetLabel" xml:space="preserve">
+    <value>Възстанови</value>
+  </data>
+  <data name="SearchLabel" xml:space="preserve">
+    <value>Търси</value>
+  </data>
+  <data name="SelectDropDownText" xml:space="preserve">
+    <value>-- избери --</value>
+  </data>
+  <data name="UpdatesLabel" xml:space="preserve">
+    <value>Актуализация</value>
+  </data>
+  <data name="ViewsLabel" xml:space="preserve">
+    <value>Огледи</value>
+  </data>
+  <data name="YearOfConstructionLabel" xml:space="preserve">
+    <value>Година на строителство</value>
+  </data>
+  <data name="YearOfConstructionNaNMessage" xml:space="preserve">
+    <value>Моля въведете число</value>
+  </data>
+  <data name="YesLabel" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="SelectImageLabel" xml:space="preserve">
+    <value>Избери снимка</value>
+  </data>
+  <data name="AddImageLabel" xml:space="preserve">
+    <value>Добави снимка</value>
+  </data>
+  <data name="UpdateEstateModel" xml:space="preserve">
+    <value>Обнови имота</value>
+  </data>
+  <data name="EstateTypeLabel" xml:space="preserve">
+    <value>Тип имот</value>
+  </data>
+  <data name="FurnishingTypesLabel" xml:space="preserve">
+    <value>Обзавеждане</value>
+  </data>
+  <data name="IsShortTermRentLabel" xml:space="preserve">
+    <value>Краткосрочен наем</value>
+  </data>
+  <data name="AcceptsPicsLabel" xml:space="preserve">
+    <value>Съгласен за снимки</value>
+  </data>
+  <data name="CityRegionLabel" xml:space="preserve">
+    <value>Район</value>
+  </data>
+  <data name="CommisionLabel" xml:space="preserve">
+    <value>Комисион</value>
+  </data>
+  <data name="CommisionNotesLabel" xml:space="preserve">
+    <value>Бележки</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="OthersLabel" xml:space="preserve">
+    <value>Други</value>
+  </data>
+  <data name="ShowOnMapLabel" xml:space="preserve">
+    <value>Покажи на картата</value>
+  </data>
+  <data name="StreetLabel" xml:space="preserve">
+    <value>Улица</value>
+  </data>
+  <data name="TotalFloorsLabel" xml:space="preserve">
+    <value>Етажа</value>
+  </data>
+  <data name="CoordinatesLabel" xml:space="preserve">
+    <value>Координати</value>
+  </data>
+  <data name="LatitudeLabel" xml:space="preserve">
+    <value>Географска ширина</value>
+  </data>
+  <data name="LongitudeLabel" xml:space="preserve">
+    <value>Географска дължина</value>
+  </data>
+  <data name="AddPhoneLabel" xml:space="preserve">
+    <value>Добави</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Имейл</value>
+  </data>
+  <data name="NamesLabel" xml:space="preserve">
+    <value>Имена</value>
+  </data>
+  <data name="OwnerLabel" xml:space="preserve">
+    <value>Собсвеник</value>
+  </data>
+  <data name="PhoneNumbersLabel" xml:space="preserve">
+    <value>Телефони</value>
+  </data>
+  <data name="CallerLabel" xml:space="preserve">
+    <value>Прозвънян</value>
+  </data>
+  <data name="CallerNoteLabel" xml:space="preserve">
+    <value>Коментар за прозвъняването</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Парола</value>
+  </data>
+  <data name="RememberMeLabel" xml:space="preserve">
+    <value>Запомни ме</value>
+  </data>
+  <data name="UsernameLabel" xml:space="preserve">
+    <value>Потребителско име</value>
+  </data>
+  <data name="EstateUserLabel" xml:space="preserve">
+    <value>Асоцииран потребител</value>
+  </data>
+  <data name="LeaveWithoutUserLabel" xml:space="preserve">
+    <value>Несоциирана</value>
+  </data>
+  <data name="PhonesRequiredErrorMessage" xml:space="preserve">
+    <value>Моля въведете телефон на собственик</value>
+  </data>
+</root>

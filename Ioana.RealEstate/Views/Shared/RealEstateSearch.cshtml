@@ -1,0 +1,126 @@
+﻿@model RealEstateSearchModel
+
+@using (Html.BeginForm("Index", "Estates", FormMethod.Get))
+{
+    <div class="row">
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.OfferType.Id, Resources.OfferTypeLabel)
+            @Html.EditorFor(m => m.OfferType, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.City.Id, Resources.CityLabel)
+            @Html.EditorFor(m => m.City, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.CityRegions.SelectedIds, Resources.CityRegionsLabel)
+            @Html.EditorFor(m => m.CityRegions, "MultiSelectModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.PriceFrom, Resources.PriceLabel)
+            <div class="input-group">
+                <span class="input-group-addon">@Resources.PriceFromLabel</span>
+                @Html.TextBoxFor(m => m.PriceFrom, new { @class = "form-control", @type = "number" })
+                <span class="input-group-addon">@Resources.PriceToLabel</span>
+                @Html.TextBoxFor(m => m.PriceTo, new { @class = "form-control", @type = "number" })
+            </div>
+            @Html.ValidationMessageFor(m => m.PriceFrom, Resources.PriceRangeErrorMessage)
+            @Html.ValidationMessageFor(m => m.PriceTo, Resources.PriceRangeErrorMessage)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.EstateTypes.SelectedIds, Resources.EstateTypesLabel)
+            @Html.EditorFor(m => m.EstateTypes, "MultiSelectModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.FurnishingType.Id, Resources.FurnishingTypeLabel)
+            @Html.EditorFor(m => m.FurnishingType, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.ConstructionStatus.Id, Resources.ConstructionStatusLabel)
+            @Html.EditorFor(m => m.ConstructionStatus, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.ConstructionType.Id, Resources.ConstructionTypeLabel)
+            @Html.EditorFor(m => m.ConstructionType, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.YearOfConstruction, Resources.YearOfConstructionLabel)
+            @Html.TextBoxFor(m => m.YearOfConstruction, new { @class = "form-control", @type = "number" })
+            @Html.ValidationMessageFor(m => m.YearOfConstruction, Resources.YearOfConstructionNaNMessage)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.FloorFrom, Resources.FloorLabel)
+            <div class="input-group">
+                <span class="input-group-addon">@Resources.FloorFromLabel</span>
+                @Html.TextBoxFor(m => m.FloorFrom, new { @class = "form-control", @type = "number" })
+                <span class="input-group-addon">@Resources.FloorToLabel</span>
+                @Html.TextBoxFor(m => m.FloorTo, new { @class = "form-control", @type = "number" })
+            </div>
+            @Html.ValidationMessageFor(m => m.FloorFrom, Resources.FloorNaNErrorMessage)
+            @Html.ValidationMessageFor(m => m.FloorTo, Resources.FloorNaNErrorMessage)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.HasElevator, Resources.ElevatorLabel)
+            @Html.EditorFor(m => m.HasElevator)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.HeatingInstallations.SelectedIds, Resources.HeatingInstallationsLabel)
+            @Html.EditorFor(m => m.HeatingInstallations, "MultiSelectModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.HasParkingSpot, Resources.ParkingSpotLabel)
+            @Html.EditorFor(m => m.HasParkingSpot)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.HasGarage, Resources.GarageLabel)
+            @Html.EditorFor(m => m.HasGarage)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.HasParkingLot, Resources.ParkingLotLabel)
+            @Html.EditorFor(m => m.HasParkingLot)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.JoineryType.Id, Resources.JoineryTypeLabel)
+            @Html.EditorFor(m => m.JoineryType, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.FlooringType.Id, Resources.FlooringTypeLabel)
+            @Html.EditorFor(m => m.FlooringType, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.AreaFrom, Resources.AreaLabel)
+            <div class="input-group">
+                <span class="input-group-addon">@Resources.AreaFromLabel</span>
+                @Html.TextBoxFor(m => m.AreaFrom, new { @class = "form-control", @type = "number" })
+                <span class="input-group-addon">@Resources.AreaToLabel</span>
+                @Html.TextBoxFor(m => m.AreaTo, new { @class = "form-control", @type = "number" })
+            </div>
+            @Html.ValidationMessageFor(m => m.AreaFrom, Resources.AreaRangeErrorMessage)
+            @Html.ValidationMessageFor(m => m.AreaTo, Resources.AreaRangeErrorMessage)
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.OfferStatus.Id, Resources.OfferStatusLabel)
+            @Html.EditorFor(m => m.OfferStatus, "DropDownModel")
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.PhoneNumber, Resources.PhoneNumberLabel)
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @type = "tel" })
+        </div>
+        <div class="form-group col-md-3">
+            @Html.LabelFor(m => m.OfferId, Resources.OfferIdLabel)
+            @Html.TextBoxFor(m => m.OfferId, new { @class = "form-control", @type = "number" })
+            @Html.ValidationMessageFor(m => m.OfferId, Resources.OfferIdRangeErrorMessage)
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-search"></i>
+        @Resources.SearchLabel
+    </button>
+    <button type="reset" class="btn btn-default">
+        <i class="glyphicon glyphicon-refresh"></i>
+        @Resources.ResetLabel
+    </button>
+    <a href="@Url.Action("Index", "Estates")" class="btn btn-danger">
+        <i class="glyphicon glyphicon-remove"></i>
+        @Resources.CleanLabel
+    </a>
+}

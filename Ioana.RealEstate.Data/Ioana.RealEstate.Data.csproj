@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A8CEFCB-DF87-4671-BB60-0F4751D20F31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ioana.RealEstate.Data</RootNamespace>
+    <AssemblyName>Ioana.RealEstate.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityFramework\Extensions\EntityExtender.cs" />
+    <Compile Include="EntityFramework\RealEstateDbContext.cs" />
+    <Compile Include="EntityFramework\RealEstateRoleStore.cs" />
+    <Compile Include="EntityFramework\RealEstateUserManager.cs" />
+    <Compile Include="Migrations\201503192058050_InitialCreate.cs" />
+    <Compile Include="Migrations\201503192058050_InitialCreate.Designer.cs">
+      <DependentUpon>201503192058050_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503281337366_Nomenclatures1.cs" />
+    <Compile Include="Migrations\201503281337366_Nomenclatures1.Designer.cs">
+      <DependentUpon>201503281337366_Nomenclatures1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503281404327_Test.cs" />
+    <Compile Include="Migrations\201503281404327_Test.Designer.cs">
+      <DependentUpon>201503281404327_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503281611563_Nomenclatures2.cs" />
+    <Compile Include="Migrations\201503281611563_Nomenclatures2.Designer.cs">
+      <DependentUpon>201503281611563_Nomenclatures2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503281713569_Nomenclatures3.cs" />
+    <Compile Include="Migrations\201503281713569_Nomenclatures3.Designer.cs">
+      <DependentUpon>201503281713569_Nomenclatures3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503282049332_Nomenclatures4.cs" />
+    <Compile Include="Migrations\201503282049332_Nomenclatures4.Designer.cs">
+      <DependentUpon>201503282049332_Nomenclatures4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504022033388_Nomenclatures5.cs" />
+    <Compile Include="Migrations\201504022033388_Nomenclatures5.Designer.cs">
+      <DependentUpon>201504022033388_Nomenclatures5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504022115107_Nomenclatures6.cs" />
+    <Compile Include="Migrations\201504022115107_Nomenclatures6.Designer.cs">
+      <DependentUpon>201504022115107_Nomenclatures6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504041339202_ClientsInitial.cs" />
+    <Compile Include="Migrations\201504041339202_ClientsInitial.Designer.cs">
+      <DependentUpon>201504041339202_ClientsInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504041357377_ClientPhoneIndex.cs" />
+    <Compile Include="Migrations\201504041357377_ClientPhoneIndex.Designer.cs">
+      <DependentUpon>201504041357377_ClientPhoneIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504042022363_PhoneClientIndexUpdate.cs" />
+    <Compile Include="Migrations\201504042022363_PhoneClientIndexUpdate.Designer.cs">
+      <DependentUpon>201504042022363_PhoneClientIndexUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504050909082_AddUserFields.cs" />
+    <Compile Include="Migrations\201504050909082_AddUserFields.Designer.cs">
+      <DependentUpon>201504050909082_AddUserFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504051749314_OfferEntity.cs" />
+    <Compile Include="Migrations\201504051749314_OfferEntity.Designer.cs">
+      <DependentUpon>201504051749314_OfferEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504062154368_DocumentUrlCol.cs" />
+    <Compile Include="Migrations\201504062154368_DocumentUrlCol.Designer.cs">
+      <DependentUpon>201504062154368_DocumentUrlCol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504102143252_DocumentRemovedRequiredRelation.cs" />
+    <Compile Include="Migrations\201504102143252_DocumentRemovedRequiredRelation.Designer.cs">
+      <DependentUpon>201504102143252_DocumentRemovedRequiredRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504121146223_FixUserNavigationProperties.cs" />
+    <Compile Include="Migrations\201504121146223_FixUserNavigationProperties.Designer.cs">
+      <DependentUpon>201504121146223_FixUserNavigationProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\CallHistory.cs" />
+    <Compile Include="Model\City.cs" />
+    <Compile Include="Model\CityRegion.cs" />
+    <Compile Include="Model\ClientPhone.cs" />
+    <Compile Include="Model\ConstructionStatus.cs" />
+    <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\EstateCharacteristics.cs" />
+    <Compile Include="Model\EstateOffer.cs" />
+    <Compile Include="Model\EstateType.cs" />
+    <Compile Include="Model\ConstructionType.cs" />
+    <Compile Include="Model\FlooringType.cs" />
+    <Compile Include="Model\FurnishingType.cs" />
+    <Compile Include="Model\HeatingInstallation.cs" />
+    <Compile Include="Model\JoineryType.cs" />
+    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\OfferStatus.cs" />
+    <Compile Include="Model\OfferStatusHistory.cs" />
+    <Compile Include="Model\OfferType.cs" />
+    <Compile Include="Model\RealEstateRole.cs" />
+    <Compile Include="EntityFramework\RealEstateUserStore.cs" />
+    <Compile Include="Model\RealEstateUser.cs" />
+    <Compile Include="Model\RealEstateUserClaim.cs" />
+    <Compile Include="Model\RealEstateUserLogin.cs" />
+    <Compile Include="Model\RealEstateUserPhone.cs" />
+    <Compile Include="Model\RealEstateUserRole.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201503192058050_InitialCreate.resx">
+      <DependentUpon>201503192058050_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503281337366_Nomenclatures1.resx">
+      <DependentUpon>201503281337366_Nomenclatures1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503281404327_Test.resx">
+      <DependentUpon>201503281404327_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503281611563_Nomenclatures2.resx">
+      <DependentUpon>201503281611563_Nomenclatures2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503281713569_Nomenclatures3.resx">
+      <DependentUpon>201503281713569_Nomenclatures3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503282049332_Nomenclatures4.resx">
+      <DependentUpon>201503282049332_Nomenclatures4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504022033388_Nomenclatures5.resx">
+      <DependentUpon>201504022033388_Nomenclatures5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504022115107_Nomenclatures6.resx">
+      <DependentUpon>201504022115107_Nomenclatures6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504041339202_ClientsInitial.resx">
+      <DependentUpon>201504041339202_ClientsInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504041357377_ClientPhoneIndex.resx">
+      <DependentUpon>201504041357377_ClientPhoneIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504042022363_PhoneClientIndexUpdate.resx">
+      <DependentUpon>201504042022363_PhoneClientIndexUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504050909082_AddUserFields.resx">
+      <DependentUpon>201504050909082_AddUserFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504051749314_OfferEntity.resx">
+      <DependentUpon>201504051749314_OfferEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504062154368_DocumentUrlCol.resx">
+      <DependentUpon>201504062154368_DocumentUrlCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504102143252_DocumentRemovedRequiredRelation.resx">
+      <DependentUpon>201504102143252_DocumentRemovedRequiredRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504121146223_FixUserNavigationProperties.resx">
+      <DependentUpon>201504121146223_FixUserNavigationProperties.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

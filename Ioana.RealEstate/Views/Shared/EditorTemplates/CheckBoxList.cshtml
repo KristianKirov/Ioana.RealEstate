@@ -1,0 +1,30 @@
+﻿@model MultiSelectModel<int>
+
+@helper RenderCheckedAttributeIfApplicable(SelectListItem dataItem)
+{
+    bool isChecked = false;
+    if (dataItem.Selected)
+    {
+        isChecked = true;
+    }
+
+    if (!isChecked && Model.SelectedIds != null)
+    {
+        int dataItemValue = int.Parse(dataItem.Value);
+        isChecked = Model.SelectedIds.Contains(dataItemValue);
+    }
+
+    if (isChecked)
+    {
+        @:checked="checked"
+    }
+}
+
+@foreach (SelectListItem dataItem in Model.Items)
+{
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="@Html.NameFor(m => m.SelectedIds)" id="@Html.IdFor(m => m.SelectedIds)" value="@dataItem.Value" @RenderCheckedAttributeIfApplicable(dataItem) /> @dataItem.Text
+        </label>
+    </div>
+}

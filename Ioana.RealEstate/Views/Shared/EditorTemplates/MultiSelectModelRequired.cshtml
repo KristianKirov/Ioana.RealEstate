@@ -1,0 +1,3 @@
+﻿@model MultiSelectModelRequired<int>
+
+@Html.ListBoxFor(m => m.SelectedIds, Model.Items, new { @class = "form-control chosen", data_placeholder = Model.Placeholder })

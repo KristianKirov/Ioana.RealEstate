@@ -1,0 +1,26 @@
+﻿@model FilesPickerModel
+
+@{
+    string tplId = Guid.NewGuid().ToString("N");
+}
+
+@helper RenderAttributeIfHasValue(string attributeName, string value)
+{
+    if (!string.IsNullOrEmpty(value))
+    {
+        @(attributeName)@:="@(value)"
+    }
+}
+<div class="file-picker-panel">
+    <div class="row">
+        <script type="text/x-ioana-template" class="file-upload-template" id="@tplId">
+            <div class="file-uploader col-md-3">
+                <div class="preview-image"></div>
+                <input type="file" name="@Html.NameFor(m => m.Files)" @RenderAttributeIfHasValue("accept", Model.Accept) @RenderAttributeIfHasValue("data-buttonText", Model.SelectLabel) />
+            </div>
+        </script>
+        <div class="col-md-3">
+            <a href="#" class="btn btn-success btn-block render-template" data-template="#@tplId"><i class="glyphicon glyphicon-plus"></i> @Resources.AddImageLabel</a>
+        </div>
+    </div>
+</div>

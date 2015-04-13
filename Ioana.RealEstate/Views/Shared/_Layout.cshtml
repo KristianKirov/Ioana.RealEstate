@@ -1,0 +1,57 @@
+﻿@model IRealEstateModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Title - @Resources.CompanyName</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="estate-search-placeholder">
+                @Html.Partial("RealEstateSearch", Model.EstateSearch)
+            </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="@Url.Action("Index", "Estates")" class="navbar-brand">
+                    <img src="@Url.Content("~/Content/express_imoti_logo.png")" alt="Logo" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink(Resources.RealEstatesLabel, "Index", "Estates")</li>
+                    <li>@Html.ActionLink(Resources.ClientsLabel, "Index", "Clients")</li>
+                    <li>@Html.ActionLink(Resources.ViewsLabel, "Index", "Views")</li>
+                    <li>@Html.ActionLink(Resources.NewRealEstatesLabel, "New", "Estates")</li>
+                    <li>@Html.ActionLink(Resources.UpdatesLabel, "Updates", "Estates")</li>
+                    <li>@Html.ActionLink(Resources.DocumentsLabel, "Index", "Documents")</li>
+                    <li><a id="toggle-estate-search" href="#">@Resources.SearchLabel</a></li>
+                    <li><a href="@Url.Action("Upsert", "Estates")" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> @Resources.AddEstateLabel</a></li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+
+        @RenderBody()
+        @*<hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

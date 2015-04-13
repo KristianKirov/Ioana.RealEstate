@@ -1,0 +1,305 @@
+﻿@model GenericRealEstateModel<InsertEstateModel>
+@{
+    Model.Title = Resources.AddEstateLabel;
+    InsertEstateModel model = Model.Data;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal estate-upsert-form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => model.OfferType.Id, @Resources.OfferTypeLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.OfferType, "DropDownModelRequired")
+            @Html.ValidationMessageFor(m => model.OfferType.Id)
+        </div>
+    </div>
+
+    <div class="form-group" id="isShortTermPanel" @(model.OfferType.Id == 2 ? string.Empty : "style=display:none")>
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="@Html.NameFor(m => model.IsShortTermRent)" value="True" @(model.IsShortTermRent != null ? "checked=checked" : string.Empty) /> @Resources.IsShortTermRentLabel
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => model.EstateType.Id, @Resources.EstateTypeLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.EstateType, "DropDownModelRequired")
+            @Html.ValidationMessageFor(m => model.EstateType.Id)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.FurnishingTypes.SelectedIds, @Resources.FurnishingTypesLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.FurnishingTypes, "MultiSelectModelRequired")
+            @Html.ValidationMessageFor(m => model.FurnishingTypes.SelectedIds)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.Floor, @Resources.FloorLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            <div class="input-group">
+                @Html.TextBoxFor(m => model.Floor, new { @class = "form-control", @type = "number" })
+                <span class="input-group-addon">@Resources.FloorFromLabel</span>
+                @Html.TextBoxFor(m => model.TotalFloors, new { @class = "form-control", @type = "number" })
+                <span class="input-group-addon">@Resources.TotalFloorsLabel</span>
+            </div>
+            @Html.ValidationMessageFor(m => model.Floor)
+            @Html.ValidationMessageFor(m => model.TotalFloors)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.Area, @Resources.AreaLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => model.Area, new { @class = "form-control", @type = "number" })
+            @Html.ValidationMessageFor(m => model.Area)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.ConstructionStatus.Id, @Resources.ConstructionStatusLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.ConstructionStatus, "DropDownModelRequired")
+            @Html.ValidationMessageFor(m => model.ConstructionStatus.Id)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.ConstructionType.Id, @Resources.ConstructionTypeLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.ConstructionType, "DropDownModelRequired")
+            @Html.ValidationMessageFor(m => model.ConstructionType.Id)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.YearOfConstruction, @Resources.YearOfConstructionLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => model.YearOfConstruction, new { @class = "form-control", @type = "number" })
+            @Html.ValidationMessageFor(m => model.YearOfConstruction)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.HeatingInstallations.SelectedIds, @Resources.HeatingInstallationsLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.HeatingInstallations, "MultiSelectModelRequired")
+            @Html.ValidationMessageFor(m => model.HeatingInstallations.SelectedIds)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => model.HasElevator) @Resources.ElevatorLabel
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.JoineryType.Id, @Resources.JoineryTypeLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.JoineryType, "DropDownModelRequired")
+            @Html.ValidationMessageFor(m => model.JoineryType.Id)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.FlooringType.Id, @Resources.FlooringTypeLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.FlooringType, "DropDownModel")
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => model.HasParkingSpot) @Resources.ParkingSpotLabel
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => model.HasGarage) @Resources.GarageLabel
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => model.HasParkingLot) @Resources.ParkingLotLabel
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.EstateCharacteristics.SelectedIds, @Resources.OthersLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.EstateCharacteristics, "CheckBoxList")
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.Description, @Resources.DescriptionLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextAreaFor(m => model.Description, new { @class = "form-control", rows = "4", placeholder = Resources.DescriptionLabel })
+            @Html.ValidationMessageFor(m => model.Description)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            @Html.EditorFor(m => model.Images, "FilesPicker")
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.Price, @Resources.PriceLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            <div class="input-group">
+                @Html.TextBoxFor(m => model.Price, new { @class = "form-control", @type = "number" })
+                <span class="input-group-addon">
+                    @Html.DropDownListFor(m => model.Currency.Id, model.Currency.Items)
+                </span>
+            </div>
+
+            @Html.ValidationMessageFor(m => model.Price)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => model.HasCommision) @Resources.CommisionLabel
+                </label>
+                @Html.ValidationMessageFor(m => model.HasCommision)
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.CommisionNotes, @Resources.CommisionNotesLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextAreaFor(m => model.CommisionNotes, new { @class = "form-control", rows = "4", placeholder = Resources.CommisionNotesLabel })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => model.AcceptsPics) @Resources.AcceptsPicsLabel
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.City.Id, @Resources.CityLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.City, "DropDownModelRequired")
+            @Html.ValidationMessageFor(m => model.City.Id)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.CityRegion.Id, @Resources.CityRegionLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.CityRegion, "DropDownModelRequired")
+            @Html.ValidationMessageFor(m => model.CityRegion.Id)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.Street, @Resources.StreetLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            <div class="input-group">
+                @Html.TextBoxFor(m => model.Street, new { @class = "form-control" })
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="showOnMapBtn"><i class="glyphicon glyphicon-map-marker"></i> @Resources.ShowOnMapLabel</button>
+                </span>
+            </div>
+            @Html.ValidationMessageFor(m => model.Street)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.Coordinates, @Resources.CoordinatesLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.Coordinates)
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">@Resources.OwnerLabel</h3>
+        </div>
+        <div class="panel-body">
+            @Html.EditorFor(m => model.Owner)
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => model.Called.AlreadyCalled, @Resources.CallerLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => model.Called)
+        </div>
+    </div>
+
+    <div class="form-group is-called-slave" @(model.Called.AlreadyCalled ? string.Empty : "style=display:none")>
+        <div class="col-sm-10 col-sm-offset-2">
+            @Html.TextAreaFor(m => model.Called.Comment, new { @class = "form-control", placeholder = @Resources.CallerNoteLabel })
+        </div>
+    </div>
+
+    if (model.Called.Caller != null)
+    {
+        <div class="form-group is-called-slave" @(model.Called.AlreadyCalled ? string.Empty : "style=display:none")>
+            <div class="col-sm-10 col-sm-offset-2">
+                @Html.EditorFor(m => model.Called.Caller, "DropDownModel")
+            </div>
+        </div>
+    }
+
+    if (model.User != null)
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => model.User.Id, @Resources.EstateUserLabel, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.EditorFor(m => model.User, "DropDownModel")
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success btn-block">
+                <i class="glyphicon glyphicon-home"></i>
+                @(model.Id == null ? Resources.AddEstateLabel : Resources.UpdateEstateModel)
+            </button>
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/bootstrap-filestyle")
+    @Scripts.Render("~/bundles/upsert-estate")
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+}

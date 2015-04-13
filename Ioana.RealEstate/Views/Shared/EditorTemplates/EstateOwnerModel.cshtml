@@ -1,0 +1,66 @@
+﻿@model EstateOwnerModel
+
+@helper PhoneNumberView(string phoneNumber, bool canRemove)
+{
+    <div class="phone-label">
+        @Html.Hidden("PhoneNumbers", phoneNumber)
+        <span class="phone-holder">@phoneNumber</span>
+        @if (canRemove)
+        {
+            <i class="glyphicon glyphicon-remove"></i>
+        }
+    </div>
+}
+
+@helper PhoneNumberView(string phoneNumber)
+{
+    @PhoneNumberView(phoneNumber, Model != null && !Model.ExistingPhones.Contains(phoneNumber))
+}
+
+<div class="owner-editor">
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumbers, @Resources.PhoneNumbersLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            <div class="phone-labels-placeholder">
+                <div class="phone-input">
+                    <div class="input-group">
+                        <input type="tel" class="form-control" placeholder="@Resources.PhoneNumberLabel" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-plus"></i> @Resources.AddPhoneLabel</button>
+                        </span>
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.PhoneNumbers, new { @class = "force-validation" })
+
+                @if (Model != null && Model.PhoneNumbers != null && Model.PhoneNumbers.Length > 0)
+                {
+                    foreach (string phoneNumber in Model.PhoneNumbers)
+                    {
+                        @PhoneNumberView(phoneNumber)
+                    }
+                }
+            </div>
+            <span class="field-validation-error" id="addPhoneError">
+            </span>
+            @Html.ValidationMessageFor(m => m.PhoneNumbers, @Resources.PhonesRequiredErrorMessage)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, @Resources.EmailLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, @Resources.NamesLabel, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+    </div>
+    <script type="text/x-ioana-template" class="new-phone-template">
+        @PhoneNumberView(string.Empty, true)
+    </script>
+</div>

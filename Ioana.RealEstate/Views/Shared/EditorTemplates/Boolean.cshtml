@@ -1,0 +1,8 @@
+﻿@model bool?
+
+@Html.DropDownListFor(m => m, new SelectListItem[]
+    {
+        new SelectListItem() { Text = Resources.SelectDropDownText, Value = string.Empty },
+        new SelectListItem() { Text = Resources.YesLabel, Value = "true" },
+        new SelectListItem() { Text = Resources.NoLabel, Value = "false" },
+    }, new { @class = "form-control" })
