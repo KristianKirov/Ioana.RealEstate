@@ -19,9 +19,9 @@ namespace Ioana.RealEstate.Models.Editors
 
     public class DropDownModel<TItems, TKey> : DropDownModel<TKey>
     {
-        public void SetItems(IEnumerable<TItems> items, Func<TItems, object> textSelector, Func<TItems, object> valueSelector, Func<TItems, object> groupNameSelector = null)
+        public void SetItems(IEnumerable<TItems> items, Func<TItems, object> textSelector, Func<TItems, TKey> valueSelector, Func<TItems, object> groupNameSelector = null)
         {
-            TypedSelectItemsProvider<TItems> selectItemsProvider = new TypedSelectItemsProvider<TItems>();
+            TypedSelectItemsProvider<TItems, TKey> selectItemsProvider = new TypedSelectItemsProvider<TItems, TKey>();
 
             this.Items = selectItemsProvider.GetSelectItems(items, textSelector, valueSelector, groupNameSelector);
         }

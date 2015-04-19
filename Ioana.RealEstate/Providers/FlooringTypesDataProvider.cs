@@ -6,24 +6,24 @@ using System.Data.Entity;
 using System.Web;
 using System.Threading.Tasks;
 using Ioana.RealEstate.Data.EntityFramework;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class FlooringTypesDataProvider : IDataProvider<FlooringTypeModel>
+    public class FlooringTypesDataProvider : EntityFrameworkProvider<FlooringTypeModel, FlooringType>
     {
-        public async Task<FlooringTypeModel[]> GetAll()
+        protected override FlooringTypeModel BuildModel(FlooringType entity)
         {
-            FlooringTypeModel[] allFlooringTypes;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new FlooringTypeModel()
             {
-                allFlooringTypes = await dbContext.FlooringTypes.Select(c => new FlooringTypeModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allFlooringTypes;
+        protected override IQueryable<FlooringType> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.FlooringTypes;
         }
     }
 }

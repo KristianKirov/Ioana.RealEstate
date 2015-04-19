@@ -8,7 +8,7 @@ using System.Text;
 namespace Ioana.RealEstate.Data.Model
 {
     [Table("CityRegions", Schema = "nomenclatures")]
-    public class CityRegion
+    public class CityRegion : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

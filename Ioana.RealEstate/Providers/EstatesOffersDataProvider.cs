@@ -65,7 +65,7 @@ namespace Ioana.RealEstate.Providers
 
             offer.LastModifiedById = currentUserId;
 
-            offer.DateCreated = offer.LastModifiedDate = DateTime.UtcNow;
+            estate.DateCreated = offer.DateCreated = offer.LastModifiedDate = DateTime.UtcNow;
 
             using (RealEstateDbContext dbContext = new RealEstateDbContext())
             {
@@ -88,6 +88,8 @@ namespace Ioana.RealEstate.Providers
                 {
                     offer.StatusId = 4; // Нова
                 }
+
+                estate.EstateStatusId = offer.StatusId;
 
                 dbContext.Offers.Add(offer);
 

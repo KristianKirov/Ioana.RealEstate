@@ -6,26 +6,25 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Data.Entity;
 using Ioana.RealEstate.Data.EntityFramework;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class CityRegionsDataProvider : IDataProvider<CityRegionModel>
+    public class CityRegionsDataProvider : EntityFrameworkProvider<CityRegionModel, CityRegion>
     {
-        public async Task<CityRegionModel[]> GetAll()
+        protected override CityRegionModel BuildModel(CityRegion entity)
         {
-            CityRegionModel[] allCityRegions;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new CityRegionModel()
             {
-                allCityRegions = await dbContext.CityRegions.Include(c => c.City)
-                    .Select(cr => new CityRegionModel()
-                    {
-                        Id = cr.Id,
-                        Name = cr.Name,
-                        CityName = cr.City.Name
-                    }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name,
+                CityName = entity.City.Name
+            };
+        }
 
-            return allCityRegions;
+        protected override IQueryable<CityRegion> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.CityRegions.Include(cr => cr.City);
         }
     }
 }

@@ -6,24 +6,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class FurnishingTypesDataProvider : IDataProvider<FurnishingTypeModel>
+    public class FurnishingTypesDataProvider : EntityFrameworkProvider<FurnishingTypeModel, FurnishingType>
     {
-        public async Task<FurnishingTypeModel[]> GetAll()
+        protected override FurnishingTypeModel BuildModel(FurnishingType entity)
         {
-            FurnishingTypeModel[] allFurnishingTypes;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new FurnishingTypeModel()
             {
-                allFurnishingTypes = await dbContext.FurnishingTypes.Select(c => new FurnishingTypeModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allFurnishingTypes;
+        protected override IQueryable<FurnishingType> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.FurnishingTypes;
         }
     }
 }

@@ -6,24 +6,24 @@ using System.Data.Entity;
 using System.Web;
 using System.Threading.Tasks;
 using Ioana.RealEstate.Data.EntityFramework;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class JoineryTypesDataProvider : IDataProvider<JoineryTypeModel>
+    public class JoineryTypesDataProvider : EntityFrameworkProvider<JoineryTypeModel, JoineryType>
     {
-        public async Task<JoineryTypeModel[]> GetAll()
+        protected override JoineryTypeModel BuildModel(JoineryType entity)
         {
-            JoineryTypeModel[] allJoineryTypes;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new JoineryTypeModel()
             {
-                allJoineryTypes = await dbContext.JoineryTypes.Select(c => new JoineryTypeModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allJoineryTypes;
+        protected override IQueryable<JoineryType> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.JoineryTypes;
         }
     }
 }

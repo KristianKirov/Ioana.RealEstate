@@ -6,24 +6,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class ConstructionStatusesDataProvider : IDataProvider<ConstructionStatusModel>
+    public class ConstructionStatusesDataProvider : EntityFrameworkProvider<ConstructionStatusModel, ConstructionStatus>
     {
-        public async Task<ConstructionStatusModel[]> GetAll()
+        protected override ConstructionStatusModel BuildModel(ConstructionStatus entity)
         {
-            ConstructionStatusModel[] allConstructionStatuses;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new ConstructionStatusModel()
             {
-                allConstructionStatuses = await dbContext.ConstructionStatuses.Select(c => new ConstructionStatusModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allConstructionStatuses;
+        protected override IQueryable<ConstructionStatus> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.ConstructionStatuses;
         }
     }
 }

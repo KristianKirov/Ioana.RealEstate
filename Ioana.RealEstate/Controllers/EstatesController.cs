@@ -13,6 +13,10 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Web.Hosting;
+using Ioana.RealEstate.Search.Models;
+using Ioana.RealEstate.Factories;
+using Ioana.RealEstate.DataManipulation;
+using Ioana.RealEstate.Search;
 
 namespace Ioana.RealEstate.Controllers
 {
@@ -53,6 +57,41 @@ namespace Ioana.RealEstate.Controllers
             {
                 return View(estateListModel);
             }
+
+            PhoneNormalizer phoneNormalizer = new PhoneNormalizer();
+            OfferIndexSearch searchCriteria = new OfferIndexSearch()
+            {
+                OfferType = searchModel.OfferType.Id,
+                City = searchModel.City.Id,
+                CityRegions = searchModel.CityRegions.SelectedIds,
+                PriceFrom = searchModel.PriceFrom,
+                PriceTo = searchModel.PriceTo,
+                EstateTypes = searchModel.EstateTypes.SelectedIds,
+                FurnishingType = searchModel.FurnishingType.Id,
+                ConstructionStatus = searchModel.ConstructionStatus.Id,
+                ConstructionType = searchModel.ConstructionType.Id,
+                YearOfConstruction = searchModel.YearOfConstruction,
+                FloorFrom = searchModel.FloorFrom,
+                FloorTo = searchModel.FloorTo,
+                HasElevator = searchModel.HasElevator,
+                HeatingInstallations = searchModel.HeatingInstallations.SelectedIds,
+                HasParkingSpot = searchModel.HasParkingSpot,
+                HasGarage = searchModel.HasGarage,
+                HasParkingLot = searchModel.HasParkingLot,
+                JoineryType = searchModel.JoineryType.Id,
+                FlooringType = searchModel.FlooringType.Id,
+                AreaFrom = searchModel.AreaFrom,
+                AreaTo = searchModel.AreaTo,
+                OfferStatus = searchModel.OfferStatus.Id,
+                PhoneNumber = phoneNormalizer.Normalize(searchModel.PhoneNumber),
+                OfferId = searchModel.OfferId
+            };
+
+            GridModelData gridData = new GridModelData(this.Request, "dateCreated", false, 10);
+            SearchResult<OfferIndexDocument> documentsResult = await SearchProviders.EstateOffer.Find(
+                searchCriteria, (gridData.CurrentPage - 1) * gridData.PageSize, gridData.PageSize, gridData.OrderBy, gridData.OrderByAscending);
+            
+            estateListModel.GridModel = new GridModel<OfferIndexDocument>(documentsResult.Items, documentsResult.TotalItems, gridData);
 
             return View(estateListModel);
         }
@@ -155,6 +194,11 @@ namespace Ioana.RealEstate.Controllers
 
                 await this.offersDataProvider.AddNewEstate(estateModel, currentUserId);
             }
+
+            OfferIndexDocumentFactory offerIndexDocumentFactory = new OfferIndexDocumentFactory();
+            OfferIndexDocument offerIndexDocument = await offerIndexDocumentFactory.CreateFromInsertModel(estateModel);
+
+            await SearchProviders.EstateOffer.Index(offerIndexDocument);
 
             return this.RedirectToAction("Details", "Estates", new { Id = estateModel.Id });
         }

@@ -135,6 +135,7 @@
     <Compile Include="Model\FlooringType.cs" />
     <Compile Include="Model\FurnishingType.cs" />
     <Compile Include="Model\HeatingInstallation.cs" />
+    <Compile Include="Model\IEntity.cs" />
     <Compile Include="Model\JoineryType.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\OfferStatus.cs" />

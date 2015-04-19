@@ -363,4 +363,31 @@
   <data name="PhonesRequiredErrorMessage" xml:space="preserve">
     <value>Моля въведете телефон на собственик</value>
   </data>
+  <data name="BrokerLabel" xml:space="preserve">
+    <value>Брокер</value>
+  </data>
+  <data name="DateCreatedLabel" xml:space="preserve">
+    <value>Дата на добавяне</value>
+  </data>
+  <data name="NoRealEstatesFoundMessage" xml:space="preserve">
+    <value>Не бяха намерени оферти</value>
+  </data>
+  <data name="PictureLabel" xml:space="preserve">
+    <value>Снимка</value>
+  </data>
+  <data name="SearchSummaryLabel" xml:space="preserve">
+    <value>Активни филтри</value>
+  </data>
+  <data name="ViewLabel" xml:space="preserve">
+    <value>Преглед</value>
+  </data>
+  <data name="OffersLabel" xml:space="preserve">
+    <value>oферти</value>
+  </data>
+  <data name="OfPagesLabel" xml:space="preserve">
+    <value>от</value>
+  </data>
+  <data name="PageSizeLabel" xml:space="preserve">
+    <value>Размер на страница</value>
+  </data>
 </root>

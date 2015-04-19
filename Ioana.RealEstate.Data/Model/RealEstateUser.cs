@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Ioana.RealEstate.Data.Model
 {
-    public class RealEstateUser : IdentityUser<int, RealEstateUserLogin, RealEstateUserRole, RealEstateUserClaim>
+    public class RealEstateUser : IdentityUser<int, RealEstateUserLogin, RealEstateUserRole, RealEstateUserClaim>, IEntity
     {
         [Required]
         public string FirstName { get; set; }

@@ -6,24 +6,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class CitiesDataProvider : IDataProvider<CityModel>
+    public class CitiesDataProvider : EntityFrameworkProvider<CityModel, City>
     {
-        public async Task<CityModel[]> GetAll()
+        protected override CityModel BuildModel(City entity)
         {
-            CityModel[] allCities;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new CityModel()
             {
-                allCities = await dbContext.Cities.Select(c => new CityModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allCities;
+        protected override IQueryable<City> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.Cities;
         }
     }
 }

@@ -1,0 +1,234 @@
+﻿@model RealEstateSearchModel
+
+@functions {
+    bool hasActiveFilters = false;
+
+    string[] cssClasses = new string[]
+    {
+        "label-success", "label-warning", "label-danger", "label-info"
+    };
+
+    int cssClassIndex = -1;
+
+    public void NextCssClass()
+    {
+        cssClassIndex = (cssClassIndex + 1) % cssClasses.Length;
+    }
+
+    public string GetCssClass()
+    {
+        return this.cssClasses[cssClassIndex];
+    }
+
+    public string GetBooleanTextValue(bool boolValue)
+    {
+        if (boolValue)
+        {
+            return Resources.YesLabel;
+        }
+
+        return Resources.NoLabel;
+    }
+}
+
+@helper RenderLabel(string name)
+{
+    this.hasActiveFilters = true;
+    <b>@name:</b>
+
+    this.NextCssClass();
+}
+
+@helper RenderFilters(params string[] filters)
+{
+    string filterCssClass = this.GetCssClass();
+    foreach (string filter in filters)
+    {
+        <span class="label @filterCssClass label-normal">@filter</span>
+    }
+}
+
+@helper RenderSummary()
+{
+    <div class="panel panel-success">
+        <div class="panel-heading text-big">
+            @Resources.SearchSummaryLabel
+
+            <a href="@Url.Action("Index", "Estates")" class="pull-right filters-clean" title="@Resources.CleanLabel">
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+        </div>
+        <div class="panel-body high-lines">
+            @if (!string.IsNullOrEmpty(Model.OfferType.Id))
+            {
+                @RenderLabel(Resources.OfferTypeLabel)
+                @RenderFilters(Model.OfferType.Id)
+            }
+
+            @if (!string.IsNullOrEmpty(Model.City.Id))
+            {
+                @RenderLabel(Resources.CityLabel)
+                @RenderFilters(Model.City.Id)
+            }
+
+            @if (Model.CityRegions.SelectedIds != null && Model.CityRegions.SelectedIds.Length > 0)
+            {
+                @RenderLabel(Resources.CityRegionsLabel)
+                @RenderFilters(Model.CityRegions.SelectedIds)
+            }
+
+            @if (Model.PriceFrom != null || Model.PriceTo != null)
+            {
+                @RenderLabel(Resources.PriceLabel)
+                if (Model.PriceFrom != null)
+                {
+                    @RenderFilters(string.Format("{0:N2} лв", Model.PriceFrom.Value))
+                    if (Model.PriceTo != null)
+                    {
+                        @:-
+                }
+                }
+
+                if (Model.PriceTo != null)
+                {
+                    @RenderFilters(string.Format("{0:N2} лв", Model.PriceTo.Value))
+                }
+            }
+
+            @if (Model.EstateTypes.SelectedIds != null && Model.EstateTypes.SelectedIds.Length > 0)
+            {
+                @RenderLabel(Resources.EstateTypesLabel)
+                @RenderFilters(Model.EstateTypes.SelectedIds)
+            }
+
+            @if (!string.IsNullOrEmpty(Model.FurnishingType.Id))
+            {
+                @RenderLabel(Resources.FurnishingTypeLabel)
+                @RenderFilters(Model.FurnishingType.Id)
+            }
+
+            @if (!string.IsNullOrEmpty(Model.ConstructionStatus.Id))
+            {
+                @RenderLabel(Resources.ConstructionStatusLabel)
+                @RenderFilters(Model.ConstructionStatus.Id)
+            }
+
+            @if (!string.IsNullOrEmpty(Model.ConstructionType.Id))
+            {
+                @RenderLabel(Resources.ConstructionTypeLabel)
+                @RenderFilters(Model.ConstructionType.Id)
+            }
+
+            @if (Model.YearOfConstruction != null)
+            {
+                @RenderLabel(Resources.YearOfConstructionLabel)
+                @RenderFilters(Model.YearOfConstruction.Value.ToString())
+            }
+
+            @if (Model.FloorFrom != null || Model.FloorTo != null)
+            {
+                @RenderLabel(Resources.FloorLabel)
+                if (Model.FloorFrom != null)
+                {
+                    @RenderFilters(Model.FloorFrom.Value.ToString())
+                    if (Model.FloorTo != null)
+                    {
+                        @:-
+                }
+                }
+
+                if (Model.FloorTo != null)
+                {
+                    @RenderFilters(Model.FloorTo.Value.ToString())
+                }
+            }
+
+            @if (Model.HasElevator != null)
+            {
+                @RenderLabel(Resources.ElevatorLabel)
+                @RenderFilters(GetBooleanTextValue(Model.HasElevator.Value))
+            }
+
+            @if (Model.HeatingInstallations.SelectedIds != null && Model.HeatingInstallations.SelectedIds.Length > 0)
+            {
+                @RenderLabel(Resources.HeatingInstallationsLabel)
+                @RenderFilters(Model.HeatingInstallations.SelectedIds)
+            }
+
+            @if (Model.HasParkingSpot != null)
+            {
+                @RenderLabel(Resources.ParkingSpotLabel)
+                @RenderFilters(GetBooleanTextValue(Model.HasParkingSpot.Value))
+            }
+
+            @if (Model.HasGarage != null)
+            {
+                @RenderLabel(Resources.GarageLabel)
+                @RenderFilters(GetBooleanTextValue(Model.HasGarage.Value))
+            }
+
+            @if (Model.HasParkingLot != null)
+            {
+                @RenderLabel(Resources.ParkingLotLabel)
+                @RenderFilters(GetBooleanTextValue(Model.HasParkingLot.Value))
+            }
+
+            @if (!string.IsNullOrEmpty(Model.JoineryType.Id))
+            {
+                @RenderLabel(Resources.JoineryTypeLabel)
+                @RenderFilters(Model.JoineryType.Id)
+            }
+
+            @if (!string.IsNullOrEmpty(Model.FlooringType.Id))
+            {
+                @RenderLabel(Resources.FlooringTypeLabel)
+                @RenderFilters(Model.FlooringType.Id)
+            }
+
+            @if (Model.AreaFrom != null || Model.AreaTo != null)
+            {
+                @RenderLabel(Resources.AreaLabel)
+                if (Model.AreaFrom != null)
+                {
+                    @RenderFilters(Model.AreaFrom.Value.ToString())
+                    if (Model.AreaTo != null)
+                    {
+                        @:-
+                }
+                }
+
+                if (Model.AreaTo != null)
+                {
+                    @RenderFilters(Model.AreaTo.Value.ToString())
+                }
+            }
+
+            @if (!string.IsNullOrEmpty(Model.OfferStatus.Id))
+            {
+                @RenderLabel(Resources.OfferStatusLabel)
+                @RenderFilters(Model.OfferStatus.Id)
+            }
+
+            @if (!string.IsNullOrEmpty(Model.PhoneNumber))
+            {
+                @RenderLabel(Resources.PhoneNumberLabel)
+                @RenderFilters(Model.PhoneNumber)
+            }
+
+            @if (Model.OfferId != null)
+            {
+                @RenderLabel(Resources.OfferIdLabel)
+                @RenderFilters(Model.OfferId.Value.ToString())
+            }
+        </div>
+    </div>
+}
+
+@{
+    string summaryResult = this.RenderSummary().ToHtmlString();
+    
+    if (this.hasActiveFilters)
+    {
+        @Html.Raw(summaryResult)
+    }
+}

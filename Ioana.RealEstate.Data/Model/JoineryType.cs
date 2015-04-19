@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Ioana.RealEstate.Data.Model
 {
     [Table("JoineryTypes", Schema = "nomenclatures")]
-    public class JoineryType
+    public class JoineryType : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

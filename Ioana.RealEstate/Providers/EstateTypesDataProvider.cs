@@ -6,24 +6,24 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class EstateTypesDataProvider : IDataProvider<EstateTypeModel>
+    public class EstateTypesDataProvider : EntityFrameworkProvider<EstateTypeModel, EstateType>
     {
-        public async Task<EstateTypeModel[]> GetAll()
+        protected override EstateTypeModel BuildModel(EstateType entity)
         {
-            EstateTypeModel[] allEstateTypes;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new EstateTypeModel()
             {
-                allEstateTypes = await dbContext.EstateTypes.Select(ot => new EstateTypeModel()
-                {
-                    Id = ot.Id,
-                    Name = ot.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allEstateTypes;
+        protected override IQueryable<EstateType> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.EstateTypes;
         }
     }
 }

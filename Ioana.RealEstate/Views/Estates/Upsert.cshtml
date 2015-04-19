@@ -9,7 +9,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.OfferType.Id, @Resources.OfferTypeLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.OfferType, "DropDownModelRequired")
+            @Html.DropDownListFromModelFor(m => model.OfferType.Id, model.OfferType)
             @Html.ValidationMessageFor(m => model.OfferType.Id)
         </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.EstateType.Id, @Resources.EstateTypeLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.EstateType, "DropDownModelRequired")
+            @Html.DropDownListFromModelFor(m => model.EstateType.Id, model.EstateType)
             @Html.ValidationMessageFor(m => model.EstateType.Id)
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.FurnishingTypes.SelectedIds, @Resources.FurnishingTypesLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.FurnishingTypes, "MultiSelectModelRequired")
+            @Html.MultiSelectFromModelFor(m => model.FurnishingTypes.SelectedIds, model.FurnishingTypes)
             @Html.ValidationMessageFor(m => model.FurnishingTypes.SelectedIds)
         </div>
     </div>
@@ -65,7 +65,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.ConstructionStatus.Id, @Resources.ConstructionStatusLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.ConstructionStatus, "DropDownModelRequired")
+            @Html.DropDownListFromModelFor(m => model.ConstructionStatus.Id, model.ConstructionStatus)
             @Html.ValidationMessageFor(m => model.ConstructionStatus.Id)
         </div>
     </div>
@@ -73,7 +73,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.ConstructionType.Id, @Resources.ConstructionTypeLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.ConstructionType, "DropDownModelRequired")
+            @Html.DropDownListFromModelFor(m => model.ConstructionType.Id, model.ConstructionType)
             @Html.ValidationMessageFor(m => model.ConstructionType.Id)
         </div>
     </div>
@@ -89,7 +89,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.HeatingInstallations.SelectedIds, @Resources.HeatingInstallationsLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.HeatingInstallations, "MultiSelectModelRequired")
+            @Html.MultiSelectFromModelFor(m => model.HeatingInstallations.SelectedIds, model.HeatingInstallations)
             @Html.ValidationMessageFor(m => model.HeatingInstallations.SelectedIds)
         </div>
     </div>
@@ -107,7 +107,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.JoineryType.Id, @Resources.JoineryTypeLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.JoineryType, "DropDownModelRequired")
+            @Html.DropDownListFromModelFor(m => model.JoineryType.Id, model.JoineryType)
             @Html.ValidationMessageFor(m => model.JoineryType.Id)
         </div>
     </div>
@@ -115,7 +115,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.FlooringType.Id, @Resources.FlooringTypeLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.FlooringType, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => model.FlooringType.Id, model.FlooringType)
         </div>
     </div>
     
@@ -215,7 +215,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.City.Id, @Resources.CityLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.City, "DropDownModelRequired")
+            @Html.DropDownListFromModelFor(m => model.City.Id, model.City)
             @Html.ValidationMessageFor(m => model.City.Id)
         </div>
     </div>
@@ -223,7 +223,7 @@
     <div class="form-group">
         @Html.LabelFor(m => model.CityRegion.Id, @Resources.CityRegionLabel, new { @class = "col-sm-2 control-label" })
         <div class="col-sm-10">
-            @Html.EditorFor(m => model.CityRegion, "DropDownModelRequired")
+            @Html.DropDownListFromModelFor(m => model.CityRegion.Id, model.CityRegion)
             @Html.ValidationMessageFor(m => model.CityRegion.Id)
         </div>
     </div>
@@ -274,7 +274,7 @@
     {
         <div class="form-group is-called-slave" @(model.Called.AlreadyCalled ? string.Empty : "style=display:none")>
             <div class="col-sm-10 col-sm-offset-2">
-                @Html.EditorFor(m => model.Called.Caller, "DropDownModel")
+                @Html.DropDownListFromModelFor(m => model.Called.Caller.Id, model.Called.Caller)
             </div>
         </div>
     }
@@ -284,7 +284,7 @@
         <div class="form-group">
             @Html.LabelFor(m => model.User.Id, @Resources.EstateUserLabel, new { @class = "col-sm-2 control-label" })
             <div class="col-sm-10">
-                @Html.EditorFor(m => model.User, "DropDownModel")
+                @Html.DropDownListFromModelFor(m => model.User.Id, model.User)
             </div>
         </div>
     }

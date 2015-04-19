@@ -6,24 +6,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class CurrenciesDataProvider : IDataProvider<CurrencyModel>
+    public class CurrenciesDataProvider : EntityFrameworkProvider<CurrencyModel, Currency>
     {
-        public async Task<CurrencyModel[]> GetAll()
+        protected override CurrencyModel BuildModel(Currency entity)
         {
-            CurrencyModel[] allCurrencies;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new CurrencyModel()
             {
-                allCurrencies = await dbContext.Currencies.Select(c => new CurrencyModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allCurrencies;
+        protected override IQueryable<Currency> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.Currencies;
         }
     }
 }

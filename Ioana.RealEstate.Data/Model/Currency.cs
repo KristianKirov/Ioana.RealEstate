@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Ioana.RealEstate.Data.Model
 {
     [Table("Currencies", Schema = "nomenclatures")]
-    public class Currency
+    public class Currency : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

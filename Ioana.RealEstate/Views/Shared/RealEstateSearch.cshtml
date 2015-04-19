@@ -5,15 +5,15 @@
     <div class="row">
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.OfferType.Id, Resources.OfferTypeLabel)
-            @Html.EditorFor(m => m.OfferType, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.OfferType.Id, Model.OfferType)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.City.Id, Resources.CityLabel)
-            @Html.EditorFor(m => m.City, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.City.Id, Model.City)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.CityRegions.SelectedIds, Resources.CityRegionsLabel)
-            @Html.EditorFor(m => m.CityRegions, "MultiSelectModel")
+            @Html.MultiSelectFromModelFor(m => m.CityRegions.SelectedIds, Model.CityRegions)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.PriceFrom, Resources.PriceLabel)
@@ -28,19 +28,19 @@
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.EstateTypes.SelectedIds, Resources.EstateTypesLabel)
-            @Html.EditorFor(m => m.EstateTypes, "MultiSelectModel")
+            @Html.MultiSelectFromModelFor(m => m.EstateTypes.SelectedIds, Model.EstateTypes)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.FurnishingType.Id, Resources.FurnishingTypeLabel)
-            @Html.EditorFor(m => m.FurnishingType, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.FurnishingType.Id, Model.FurnishingType)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.ConstructionStatus.Id, Resources.ConstructionStatusLabel)
-            @Html.EditorFor(m => m.ConstructionStatus, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.ConstructionStatus.Id, Model.ConstructionStatus)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.ConstructionType.Id, Resources.ConstructionTypeLabel)
-            @Html.EditorFor(m => m.ConstructionType, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.ConstructionType.Id, Model.ConstructionType)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.YearOfConstruction, Resources.YearOfConstructionLabel)
@@ -64,7 +64,7 @@
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.HeatingInstallations.SelectedIds, Resources.HeatingInstallationsLabel)
-            @Html.EditorFor(m => m.HeatingInstallations, "MultiSelectModel")
+            @Html.MultiSelectFromModelFor(m => m.HeatingInstallations.SelectedIds, Model.HeatingInstallations)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.HasParkingSpot, Resources.ParkingSpotLabel)
@@ -80,11 +80,11 @@
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.JoineryType.Id, Resources.JoineryTypeLabel)
-            @Html.EditorFor(m => m.JoineryType, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.JoineryType.Id, Model.JoineryType)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.FlooringType.Id, Resources.FlooringTypeLabel)
-            @Html.EditorFor(m => m.FlooringType, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.FlooringType.Id, Model.FlooringType)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.AreaFrom, Resources.AreaLabel)
@@ -99,7 +99,7 @@
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.OfferStatus.Id, Resources.OfferStatusLabel)
-            @Html.EditorFor(m => m.OfferStatus, "DropDownModel")
+            @Html.DropDownListFromModelFor(m => m.OfferStatus.Id, Model.OfferStatus)
         </div>
         <div class="form-group col-md-3">
             @Html.LabelFor(m => m.PhoneNumber, Resources.PhoneNumberLabel)

@@ -43,6 +43,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Elasticsearch.Net">
+      <HintPath>..\packages\Elasticsearch.Net.1.4.3\lib\net45\Elasticsearch.Net.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -99,6 +102,9 @@
     <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Nest">
+      <HintPath>..\packages\NEST.1.4.3\lib\net45\Nest.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -192,9 +198,11 @@
     <Compile Include="Controllers\PhonesController.cs" />
     <Compile Include="DataManipulation\PhoneNormalizer.cs" />
     <Compile Include="Extensions\Authentication\PrincipalExtensions.cs" />
+    <Compile Include="Factories\OfferIndexDocumentFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Api\ValidatePhoneRequest.cs" />
     <Compile Include="Models\CalledEstateModel.cs" />
@@ -207,6 +215,8 @@
     <Compile Include="Models\EstateListModel.cs" />
     <Compile Include="Models\EstateOwnerModel.cs" />
     <Compile Include="Models\GenericRealEstateModel.cs" />
+    <Compile Include="Models\GridModel.cs" />
+    <Compile Include="Models\GridModelData.cs" />
     <Compile Include="Models\InsertEstateModel.cs" />
     <Compile Include="Models\IRealEstateModel.cs" />
     <Compile Include="Models\Nomenclatures\ConstructionStatusModel.cs" />
@@ -230,6 +240,7 @@
     <Compile Include="Providers\ConstructionTypesDataProvider.cs" />
     <Compile Include="Providers\CurrenciesDataProvider.cs" />
     <Compile Include="Providers\DocumentDataProvider.cs" />
+    <Compile Include="Providers\EntityFrameworkProvider.cs" />
     <Compile Include="Providers\EstateCharacteristicsDataProvider.cs" />
     <Compile Include="Providers\EstatesOffersDataProvider.cs" />
     <Compile Include="Providers\FlooringTypesDataProvider.cs" />
@@ -242,6 +253,7 @@
     <Compile Include="Providers\JoineryTypesDataProvider.cs" />
     <Compile Include="Providers\OfferStatusesDataProvider.cs" />
     <Compile Include="Providers\OfferTypesDataProvider.cs" />
+    <Compile Include="Providers\SearchProviders.cs" />
     <Compile Include="Providers\UsersDataProvider.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Storage\FileSystemStorage.cs" />
@@ -279,6 +291,7 @@
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\upsert-estate.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="TODO.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -302,18 +315,15 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\RealEstateSearch.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DropDownModel.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\MultiSelectModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Estates\Upsert.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CheckBoxList.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\FilesPicker.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DropDownModelRequired.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\MultiSelectModelRequired.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\GeoPositionModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EstateOwnerModel.cshtml" />
     <Content Include="Views\Shared\_AccountLayout.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CalledEstateModel.cshtml" />
+    <Content Include="Views\Shared\RealEstateSearchSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,6 +345,10 @@
     <ProjectReference Include="..\Ioana.RealEstate.Localization\Ioana.RealEstate.Localization.csproj">
       <Project>{71c61d73-3333-44e2-a264-7e4a09b5d9fa}</Project>
       <Name>Ioana.RealEstate.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ioana.RealEstate.Search\Ioana.RealEstate.Search.csproj">
+      <Project>{0b12c2ff-b181-4077-ab68-a3f04cbef76f}</Project>
+      <Name>Ioana.RealEstate.Search</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

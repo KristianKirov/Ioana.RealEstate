@@ -9,5 +9,9 @@ namespace Ioana.RealEstate.Providers
     public interface IDataProvider<TModel>
     {
         Task<TModel[]> GetAll();
+
+        Task<TModel> GetById(int id);
+
+        Task<TModel[]> GetByIds(params int[] ids);
     }
 }

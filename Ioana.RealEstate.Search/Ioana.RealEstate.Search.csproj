@@ -49,9 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ElasticSearch\EstateOfferSearchProvider.cs" />
+    <Compile Include="ISearchProvider.cs" />
     <Compile Include="Models\OfferIndexDocument.cs" />
     <Compile Include="Models\OfferIndexSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchResult.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

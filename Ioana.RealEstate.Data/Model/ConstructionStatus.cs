@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Ioana.RealEstate.Data.Model
 {
     [Table("ConstructionStatuses", Schema = "nomenclatures")]
-    public class ConstructionStatus
+    public class ConstructionStatus : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -6,24 +6,24 @@ using System.Data.Entity;
 using System.Web;
 using System.Threading.Tasks;
 using Ioana.RealEstate.Data.EntityFramework;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class OfferStatusesDataProvider : IDataProvider<OfferStatusModel>
+    public class OfferStatusesDataProvider : EntityFrameworkProvider<OfferStatusModel, OfferStatus>
     {
-        public async Task<OfferStatusModel[]> GetAll()
+        protected override OfferStatusModel BuildModel(OfferStatus entity)
         {
-            OfferStatusModel[] allOfferStatuses;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new OfferStatusModel()
             {
-                allOfferStatuses = await dbContext.OfferStatuses.Select(c => new OfferStatusModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allOfferStatuses;
+        protected override IQueryable<OfferStatus> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.OfferStatuses;
         }
     }
 }

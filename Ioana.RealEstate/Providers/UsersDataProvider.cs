@@ -6,24 +6,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class UsersDataProvider : IDataProvider<UserModel>
+    public class UsersDataProvider : EntityFrameworkProvider<UserModel, RealEstateUser>
     {
-        public async Task<UserModel[]> GetAll()
+        protected override UserModel BuildModel(RealEstateUser entity)
         {
-            UserModel[] allUsers;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new UserModel()
             {
-                allUsers = (await dbContext.Users.ToArrayAsync()).Select(u => new UserModel()
-                    {
-                        Id = u.Id,
-                        FullName = string.Join(" ", u.FirstName, u.LastName)
-                    }).OrderBy(u => u.FullName).ToArray();
-            }
+                Id = entity.Id,
+                FullName = string.Join(" ", entity.FirstName, entity.LastName)
+            };
+        }
 
-            return allUsers;
+        protected override IQueryable<RealEstateUser> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.Users;
         }
     }
 }

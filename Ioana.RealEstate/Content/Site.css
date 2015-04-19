@@ -101,3 +101,39 @@ textarea.form-control {
     width: 280px;
     margin: 5px;
 }
+
+.label.label-normal {
+    font-size: 100%;
+}
+
+.text-big {
+    font-size: 18px;
+}
+
+.high-lines {
+    line-height: 2;
+}
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
+    background-color: #d9edf7;
+}
+
+.filters-clean, .filters-clean:visited {
+    color: #468847;
+}
+
+.filters-clean:hover, .filters-clean:active {
+    color: #5cb85c;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.table a.grid-header {
+    color: black;
+}

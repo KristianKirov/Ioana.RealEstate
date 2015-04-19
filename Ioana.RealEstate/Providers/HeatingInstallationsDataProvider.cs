@@ -6,24 +6,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web;
+using Ioana.RealEstate.Data.Model;
 
 namespace Ioana.RealEstate.Providers
 {
-    public class HeatingInstallationsDataProvider : IDataProvider<HeatingInstallationModel>
+    public class HeatingInstallationsDataProvider : EntityFrameworkProvider<HeatingInstallationModel, HeatingInstallation>
     {
-        public async Task<HeatingInstallationModel[]> GetAll()
+        protected override HeatingInstallationModel BuildModel(HeatingInstallation entity)
         {
-            HeatingInstallationModel[] allHeatingInstallations;
-            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            return new HeatingInstallationModel()
             {
-                allHeatingInstallations = await dbContext.HeatingInstallations.Select(c => new HeatingInstallationModel()
-                {
-                    Id = c.Id,
-                    Name = c.Name
-                }).ToArrayAsync();
-            }
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
 
-            return allHeatingInstallations;
+        protected override IQueryable<HeatingInstallation> GetQuery(RealEstateDbContext dbContext)
+        {
+            return dbContext.HeatingInstallations;
         }
     }
 }

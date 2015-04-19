@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Ioana.RealEstate.Data.Model
 {
     [Table("HeatingInstallations", Schema = "nomenclatures")]
-    public class HeatingInstallation
+    public class HeatingInstallation : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

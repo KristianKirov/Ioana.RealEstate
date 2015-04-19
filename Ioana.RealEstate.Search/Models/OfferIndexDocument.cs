@@ -20,7 +20,7 @@ namespace Ioana.RealEstate.Search.Models
 
         public string EstateType { get; set; }
 
-        public string FurnishingType { get; set; }
+        public string[] FurnishingTypes { get; set; }
 
         public string ConstructionStatus { get; set; }
 

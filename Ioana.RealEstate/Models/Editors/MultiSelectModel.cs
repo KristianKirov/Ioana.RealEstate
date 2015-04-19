@@ -16,35 +16,43 @@ namespace Ioana.RealEstate.Models.Editors
 
     public class MultiSelectModel<TKey> : MultiSelectModelBase
     {
-        public TKey[] SelectedIds { get; set; }
+        public virtual TKey[] SelectedIds { get; set; }
     }
 
-    public class MultiSelectModelRequired<TKey> : MultiSelectModelBase
-    {
-        [MinLength(1)]
-        [Required]
-        public TKey[] SelectedIds { get; set; }
-    }
+    //public class MultiSelectModelRequired<TKey> : MultiSelectModelBase
+    //{
+    //    [MinLength(1)]
+    //    [Required]
+    //    public TKey[] SelectedIds { get; set; }
+    //}
 
     public class MultiSelectModel<TItems, TKey> : MultiSelectModel<TKey>
     {
-        public void SetItems(IEnumerable<TItems> items, Func<TItems, object> textSelector, Func<TItems, object> valueSelector, Func<TItems, object> groupNameSelector = null)
+        public void SetItems(IEnumerable<TItems> items, Func<TItems, object> textSelector, Func<TItems, TKey> valueSelector, Func<TItems, object> groupNameSelector = null)
         {
-            TypedSelectItemsProvider<TItems> selectItemsProvider = new TypedSelectItemsProvider<TItems>();
+            TypedSelectItemsProvider<TItems, TKey> selectItemsProvider = new TypedSelectItemsProvider<TItems, TKey>();
             this.Items = selectItemsProvider.GetSelectItems(items, textSelector, valueSelector, groupNameSelector);
         }
     }
 
-    public class MultiSelectModelRequired<TItems, TKey> : MultiSelectModelRequired<TKey>
+    public class MultiSelectModelRequired<TItems, TKey> : MultiSelectModel<TItems, TKey>
     {
-        public void SetItems(IEnumerable<TItems> items, Func<TItems, object> textSelector, Func<TItems, object> valueSelector, Func<TItems, object> groupNameSelector = null)
+        [MinLength(1)]
+        [Required]
+        public override TKey[] SelectedIds
         {
-            TypedSelectItemsProvider<TItems> selectItemsProvider = new TypedSelectItemsProvider<TItems>();
-            this.Items = selectItemsProvider.GetSelectItems(items, textSelector, valueSelector, groupNameSelector);
+            get
+            {
+                return base.SelectedIds;
+            }
+            set
+            {
+                base.SelectedIds = value;
+            }
         }
     }
 
-    public class TypedSelectItemsProvider<TItems>
+    public class TypedSelectItemsProvider<TItems, TKey>
     {
         private Dictionary<string, SelectListGroup> selectGroups;
 
@@ -71,7 +79,7 @@ namespace Ioana.RealEstate.Models.Editors
             return foundGroup;
         }
 
-        public SelectListItem[] GetSelectItems(IEnumerable<TItems> items, Func<TItems, object> textSelector, Func<TItems, object> valueSelector, Func<TItems, object> groupNameSelector)
+        public SelectListItem[] GetSelectItems(IEnumerable<TItems> items, Func<TItems, object> textSelector, Func<TItems, TKey> valueSelector, Func<TItems, object> groupNameSelector)
         {
             SelectListItem[] selectItems = items.Select(i =>
             {

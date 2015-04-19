@@ -79,7 +79,6 @@ namespace Ioana.RealEstate.Data.Model
         [Required]
         public string Description { get; set; }
 
-        [Required]
         public virtual ICollection<Document> Images { get; set; }
 
         [Required]

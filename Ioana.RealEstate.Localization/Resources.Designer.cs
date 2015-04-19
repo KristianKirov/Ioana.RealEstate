@@ -133,6 +133,15 @@ namespace Ioana.RealEstate.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Брокер.
+        /// </summary>
+        public static string BrokerLabel {
+            get {
+                return ResourceManager.GetString("BrokerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Прозвънян.
         /// </summary>
         public static string CallerLabel {
@@ -246,6 +255,15 @@ namespace Ioana.RealEstate.Localization {
         public static string CoordinatesLabel {
             get {
                 return ResourceManager.GetString("CoordinatesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дата на добавяне.
+        /// </summary>
+        public static string DateCreatedLabel {
+            get {
+                return ResourceManager.GetString("DateCreatedLabel", resourceCulture);
             }
         }
         
@@ -502,6 +520,15 @@ namespace Ioana.RealEstate.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не бяха намерени оферти.
+        /// </summary>
+        public static string NoRealEstatesFoundMessage {
+            get {
+                return ResourceManager.GetString("NoRealEstatesFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to № оферта.
         /// </summary>
         public static string OfferIdLabel {
@@ -516,6 +543,15 @@ namespace Ioana.RealEstate.Localization {
         public static string OfferIdRangeErrorMessage {
             get {
                 return ResourceManager.GetString("OfferIdRangeErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to oферти.
+        /// </summary>
+        public static string OffersLabel {
+            get {
+                return ResourceManager.GetString("OffersLabel", resourceCulture);
             }
         }
         
@@ -538,6 +574,15 @@ namespace Ioana.RealEstate.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to от.
+        /// </summary>
+        public static string OfPagesLabel {
+            get {
+                return ResourceManager.GetString("OfPagesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Други.
         /// </summary>
         public static string OthersLabel {
@@ -552,6 +597,15 @@ namespace Ioana.RealEstate.Localization {
         public static string OwnerLabel {
             get {
                 return ResourceManager.GetString("OwnerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Размер на страница.
+        /// </summary>
+        public static string PageSizeLabel {
+            get {
+                return ResourceManager.GetString("PageSizeLabel", resourceCulture);
             }
         }
         
@@ -606,6 +660,15 @@ namespace Ioana.RealEstate.Localization {
         public static string PhonesRequiredErrorMessage {
             get {
                 return ResourceManager.GetString("PhonesRequiredErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Снимка.
+        /// </summary>
+        public static string PictureLabel {
+            get {
+                return ResourceManager.GetString("PictureLabel", resourceCulture);
             }
         }
         
@@ -691,6 +754,15 @@ namespace Ioana.RealEstate.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Активни филтри.
+        /// </summary>
+        public static string SearchSummaryLabel {
+            get {
+                return ResourceManager.GetString("SearchSummaryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -- избери --.
         /// </summary>
         public static string SelectDropDownText {
@@ -759,6 +831,15 @@ namespace Ioana.RealEstate.Localization {
         public static string UsernameLabel {
             get {
                 return ResourceManager.GetString("UsernameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Преглед.
+        /// </summary>
+        public static string ViewLabel {
+            get {
+                return ResourceManager.GetString("ViewLabel", resourceCulture);
             }
         }
         

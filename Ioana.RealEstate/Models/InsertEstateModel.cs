@@ -128,6 +128,10 @@ namespace Ioana.RealEstate.Models
 
         public DropDownModel<UserModel, int?> User { get; set; }
 
+        public int? EstateStatusId { get; set; }
+
+        public DateTime? DateCreated { get; set; }
+
         public async Task Load(IPrincipal currentUser)
         {
             IDataProvider<OfferTypeModel> offerTypesProvider = new OfferTypesDataProvider();

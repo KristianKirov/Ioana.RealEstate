@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Ioana.RealEstate.Search.ElasticSearch
 {
-    public class EstateOfferSearchProvider
+    public class EstateOfferSearchProvider : ISearchProvider<OfferIndexDocument, OfferIndexSearch>
     {
         private const string INDEX_NAME = "offers";
 
@@ -50,7 +50,7 @@ namespace Ioana.RealEstate.Search.ElasticSearch
                                 .String(n => n.Name(d => d.CityRegion).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
                                 .Number(n => n.Name(d => d.Price).Store(false).Index(NonStringIndexOption.NotAnalyzed).Type(NumberType.Double))
                                 .String(n => n.Name(d => d.EstateType).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
-                                .String(n => n.Name(d => d.FurnishingType).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
+                                .String(n => n.Name(d => d.FurnishingTypes).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
                                 .String(n => n.Name(d => d.ConstructionStatus).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
                                 .String(n => n.Name(d => d.ConstructionType).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
                                 .Number(n => n.Name(d => d.YearOfConstruction).Store(false).Index(NonStringIndexOption.NotAnalyzed).Type(NumberType.Integer))
@@ -72,7 +72,7 @@ namespace Ioana.RealEstate.Search.ElasticSearch
             }
         }
 
-        public async Task<OfferIndexDocument[]> Find(OfferIndexSearch searchCriteria, int skip, int take, Expression<Func<OfferIndexDocument, object>> orderBy, bool accending)
+        public async Task<SearchResult<OfferIndexDocument>> Find(OfferIndexSearch searchCriteria, int skip, int take, string orderBy, bool accending)
         {
             List<Func<FilterDescriptor<OfferIndexDocument>, FilterContainer>> filters = new List<Func<FilterDescriptor<OfferIndexDocument>, FilterContainer>>();
             if (!string.IsNullOrEmpty(searchCriteria.OfferType))
@@ -116,7 +116,7 @@ namespace Ioana.RealEstate.Search.ElasticSearch
 
             if (!string.IsNullOrEmpty(searchCriteria.FurnishingType))
             {
-                filters.Add(c => c.Term(d => d.FurnishingType, searchCriteria.FurnishingType));
+                filters.Add(c => c.Term(d => d.FurnishingTypes, searchCriteria.FurnishingType));
             }
 
             if (!string.IsNullOrEmpty(searchCriteria.ConstructionStatus))
@@ -222,11 +222,6 @@ namespace Ioana.RealEstate.Search.ElasticSearch
                 filters.Add(c => c.Term(d => d.Id, searchCriteria.OfferId.Value));
             }
 
-            if (filters.Count == 0)
-            {
-                return new OfferIndexDocument[0];
-            }
-
             ISearchResponse<OfferIndexDocument> searchResult = await this.client.SearchAsync<OfferIndexDocument>(
                 s => s
                     .Index(this.IndexName)
@@ -240,7 +235,7 @@ namespace Ioana.RealEstate.Search.ElasticSearch
 
             OfferIndexDocument[] foundDocuments = searchResult.Documents.ToArray();
 
-            return foundDocuments;
+            return new SearchResult<OfferIndexDocument>(foundDocuments, (int)searchResult.Total);
         }
 
         public async Task Index(OfferIndexDocument document)
