@@ -16,6 +16,8 @@ namespace Ioana.RealEstate.Search.Models
 
         public string CityRegion  { get; set; }
 
+        public int DisplayCurrencyId { get; set; }
+
         public decimal Price { get; set; }
 
         public string EstateType { get; set; }

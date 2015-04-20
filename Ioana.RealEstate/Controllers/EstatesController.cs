@@ -17,6 +17,7 @@ using Ioana.RealEstate.Search.Models;
 using Ioana.RealEstate.Factories;
 using Ioana.RealEstate.DataManipulation;
 using Ioana.RealEstate.Search;
+using Ioana.RealEstate.Converters;
 
 namespace Ioana.RealEstate.Controllers
 {
@@ -64,8 +65,6 @@ namespace Ioana.RealEstate.Controllers
                 OfferType = searchModel.OfferType.Id,
                 City = searchModel.City.Id,
                 CityRegions = searchModel.CityRegions.SelectedIds,
-                PriceFrom = searchModel.PriceFrom,
-                PriceTo = searchModel.PriceTo,
                 EstateTypes = searchModel.EstateTypes.SelectedIds,
                 FurnishingType = searchModel.FurnishingType.Id,
                 ConstructionStatus = searchModel.ConstructionStatus.Id,
@@ -86,6 +85,17 @@ namespace Ioana.RealEstate.Controllers
                 PhoneNumber = phoneNormalizer.Normalize(searchModel.PhoneNumber),
                 OfferId = searchModel.OfferId
             };
+
+            CurrencyConverter currencyConverter = new CurrencyConverter();
+            if (searchModel.PriceFrom != null)
+            {
+                searchCriteria.PriceFrom = currencyConverter.ToDefaultCurrency(searchModel.PriceFrom.Value, searchModel.Currency.Id);
+            }
+
+            if (searchModel.PriceTo != null)
+            {
+                searchCriteria.PriceTo = currencyConverter.ToDefaultCurrency(searchModel.PriceTo.Value, searchModel.Currency.Id);
+            }
 
             GridModelData gridData = new GridModelData(this.Request, "dateCreated", false, 10);
             SearchResult<OfferIndexDocument> documentsResult = await SearchProviders.EstateOffer.Find(
@@ -200,7 +210,33 @@ namespace Ioana.RealEstate.Controllers
 
             await SearchProviders.EstateOffer.Index(offerIndexDocument);
 
-            return this.RedirectToAction("Details", "Estates", new { Id = estateModel.Id });
+            ThumbnailProvider thumbnailProvider = new ThumbnailProvider();
+            await thumbnailProvider.GenerateDefaultThumbnail(estateModel.Id.Value);
+
+            return this.RedirectToAction("Details", "Estates", new { Id = estateModel.Id.Value });
+        }
+
+        public async Task<ActionResult> ReindexDocuments()
+        {
+            await SearchProviders.EstateOffer.Index(new OfferIndexDocument()
+            {
+                Id = 5,
+                DisplayCurrencyId = 1
+            });
+
+            await SearchProviders.EstateOffer.Index(new OfferIndexDocument()
+            {
+                Id = 6,
+                DisplayCurrencyId = 2
+            });
+
+            await SearchProviders.EstateOffer.Index(new OfferIndexDocument()
+            {
+                Id = 7,
+                DisplayCurrencyId = 1
+            });
+
+            return this.RedirectToAction("Index");
         }
     }
 }

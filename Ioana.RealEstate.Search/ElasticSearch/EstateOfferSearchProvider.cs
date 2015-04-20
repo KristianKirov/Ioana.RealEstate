@@ -48,6 +48,7 @@ namespace Ioana.RealEstate.Search.ElasticSearch
                                 .String(n => n.Name(d => d.OfferType).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
                                 .String(n => n.Name(d => d.City).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
                                 .String(n => n.Name(d => d.CityRegion).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
+                                .Number(n => n.Name(d => d.DisplayCurrencyId).Store(false).Index(NonStringIndexOption.NotAnalyzed).Type(NumberType.Integer))
                                 .Number(n => n.Name(d => d.Price).Store(false).Index(NonStringIndexOption.NotAnalyzed).Type(NumberType.Double))
                                 .String(n => n.Name(d => d.EstateType).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())
                                 .String(n => n.Name(d => d.FurnishingTypes).Store(false).Index(FieldIndexOption.NotAnalyzed).OmitNorms())

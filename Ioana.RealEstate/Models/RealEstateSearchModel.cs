@@ -25,6 +25,8 @@ namespace Ioana.RealEstate.Models
         [Range(0, int.MaxValue)]
         public decimal? PriceTo { get; set; }
 
+        public DropDownModel<CurrencyModel, int> Currency { get; set; }
+
         public MultiSelectModel<EstateTypeModel, string> EstateTypes { get; set; }
 
         public DropDownModel<FurnishingTypeModel, string> FurnishingType { get; set; }
@@ -79,6 +81,7 @@ namespace Ioana.RealEstate.Models
             IDataProvider<JoineryTypeModel> joineryTypesProvider = new JoineryTypesDataProvider();
             IDataProvider<FlooringTypeModel> flooringTypesProvider = new FlooringTypesDataProvider();
             IDataProvider<OfferStatusModel> offerStatusesProvider = new OfferStatusesDataProvider();
+            IDataProvider<CurrencyModel> currenciesProvider = new CurrenciesDataProvider();
 
             Task<OfferTypeModel[]> getAllOfferTypesTask = offerTypesProvider.GetAll();
             Task<CityModel[]> getAllCitiesTask = citiesProvider.GetAll();
@@ -91,6 +94,7 @@ namespace Ioana.RealEstate.Models
             Task<JoineryTypeModel[]> getAllJoineryTypesTask = joineryTypesProvider.GetAll();
             Task<FlooringTypeModel[]> getAllFlooringTypesTask = flooringTypesProvider.GetAll();
             Task<OfferStatusModel[]> getAllOfferStatusesTask = offerStatusesProvider.GetAll();
+            Task<CurrencyModel[]> getAllCurrenciesTask = currenciesProvider.GetAll();
 
             if (this.OfferType == null)
             {
@@ -168,6 +172,12 @@ namespace Ioana.RealEstate.Models
             }
             this.OfferStatus.OptionLabel = Resources.SelectDropDownText;
             this.OfferStatus.SetItems(await getAllOfferStatusesTask, c => c.Name, c => c.Name);
+
+            if (this.Currency == null)
+            {
+                this.Currency = new DropDownModel<CurrencyModel, int>();
+            }
+            this.Currency.SetItems(await getAllCurrenciesTask, c => c.Name, c => c.Id);
         }
     }
 }

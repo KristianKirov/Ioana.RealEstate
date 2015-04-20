@@ -44,5 +44,19 @@ namespace Ioana.RealEstate.Storage
 
             return string.Concat(Guid.NewGuid().ToString("N"), name);
         }
+
+        public Stream GetReadStream(string name)
+        {
+            string documentPath = Path.Combine(this.basePath, name);
+
+            return new FileStream(documentPath, FileMode.Open);
+        }
+
+        public Stream CreateWriteStream(string name)
+        {
+            string documentPath = Path.Combine(this.basePath, name);
+
+            return new FileStream(documentPath, FileMode.Create);
+        }
     }
 }

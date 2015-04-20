@@ -1,5 +1,8 @@
-﻿Currency in search and search results
-format currency in search results
-offer list date format and time zone
+﻿-- Currency in search and search results
+-- format currency in search results
+-- offer list date format and time zone
 -- Get items count from elastic search
 -- Sorting and paging of grid items
+Имоти
+Нови имоти
+Актуализация

@@ -1,4 +1,5 @@
-﻿using Ioana.RealEstate.Data.EntityFramework;
+﻿using Ioana.RealEstate.Converters;
+using Ioana.RealEstate.Data.EntityFramework;
 using Ioana.RealEstate.Data.EntityFramework.Extensions;
 using Ioana.RealEstate.Data.Model;
 using Ioana.RealEstate.Models;
@@ -33,7 +34,8 @@ namespace Ioana.RealEstate.Providers
             offer.HasGarage = estate.HasGarage;
             offer.HasParkingLot = estate.HasParkingLot;
             offer.Description = estate.Description;
-            offer.Price = estate.Price.Value;
+            CurrencyConverter currencyConverter = new CurrencyConverter();
+            offer.Price = currencyConverter.ToDefaultCurrency(estate.Price.Value, estate.Currency.Id);
             offer.CurrencyId = estate.Currency.Id;
             offer.HasCommision = estate.HasCommision;
             offer.CommisionNotes = estate.CommisionNotes;

@@ -82,16 +82,16 @@
                 @RenderLabel(Resources.PriceLabel)
                 if (Model.PriceFrom != null)
                 {
-                    @RenderFilters(string.Format("{0:N2} лв", Model.PriceFrom.Value))
+                    @RenderFilters(Html.Price(Model.PriceFrom.Value, Model.Currency.Id, false))
                     if (Model.PriceTo != null)
                     {
                         @:-
-                }
+                    }
                 }
 
                 if (Model.PriceTo != null)
                 {
-                    @RenderFilters(string.Format("{0:N2} лв", Model.PriceTo.Value))
+                    @RenderFilters(Html.Price(Model.PriceTo.Value, Model.Currency.Id, false))
                 }
             }
 

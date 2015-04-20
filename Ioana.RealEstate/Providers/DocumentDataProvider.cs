@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Data.Entity;
 
 namespace Ioana.RealEstate.Providers
 {
@@ -48,6 +49,26 @@ namespace Ioana.RealEstate.Providers
 
                 ++i;
             }
+        }
+
+        public async Task<DocumentModel> GetDefaultImage(int offerId)
+        {
+            DocumentModel defaultImageModel = null;
+            using (RealEstateDbContext dbContext = new RealEstateDbContext())
+            {
+                Document defaultImage = await dbContext.Documents.Where(d => d.EstateOffers.Any(o => o.Id == offerId)).OrderBy(d => d.Id).FirstOrDefaultAsync();
+                if (defaultImage != null)
+                {
+                    defaultImageModel = new DocumentModel()
+                    {
+                        Id = defaultImage.Id,
+                        ContentType = defaultImage.ContentType,
+                        Url = defaultImage.Url
+                    };
+                }
+            }
+
+            return defaultImageModel;
         }
     }
 }

@@ -178,3 +178,7 @@ SearchIndexes/
 
 #app settings
 App_Data/
+
+docs/
+
+tmbs/

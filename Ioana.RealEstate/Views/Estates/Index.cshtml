@@ -27,41 +27,41 @@
 else
 {
     <div class="panel panel-default">
-        @*<div class="panel-body">*@
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>@GridHeader("id", "#")</th>
-                    <th>@GridHeader("offerType", Resources.OfferTypeLabel)</th>
-                    <th>@GridHeader("estateType", Resources.EstateTypeLabel)</th>
-                    <th>@GridHeader("cityRegion", Resources.CityRegionLabel)</th>
-                    <th>@GridHeader("area", Resources.AreaLabel)</th>
-                    <th>@GridHeader("price", Resources.PriceLabel)</th>
-                    <th>@GridHeader("responsible", Resources.BrokerLabel)</th>
-                    <th>@GridHeader("dateCreated", Resources.DateCreatedLabel)</th>
-                    <th>@Resources.PictureLabel</th>
-                    <th><i class="glyphicon glyphicon-share"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (OfferIndexDocument item in Model.GridModel.Items)
-                {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
                     <tr>
-                        <th scope="row">@item.Id</th>
-                        <td>@item.OfferType</td>
-                        <td>@item.EstateType</td>
-                        <td>@item.City - @item.CityRegion</td>
-                        <td>@item.Area</td>
-                        <td>@item.Price</td>
-                        <td>@item.Responsible</td>
-                        <td>@item.DateCreated</td>
-                        <td>снимка ...</td>
-                        <td>@Html.ActionLink(Resources.ViewLabel, "Details", "Estates", new { Id = item.Id }, null)</td>
+                        <th>@GridHeader("id", "#")</th>
+                        <th>@GridHeader("offerType", Resources.OfferTypeLabel)</th>
+                        <th>@GridHeader("estateType", Resources.EstateTypeLabel)</th>
+                        <th>@GridHeader("cityRegion", Resources.CityRegionLabel)</th>
+                        <th>@GridHeader("area", Resources.AreaLabel)</th>
+                        <th>@GridHeader("price", Resources.PriceLabel)</th>
+                        <th>@GridHeader("responsible", Resources.BrokerLabel)</th>
+                        <th>@GridHeader("dateCreated", Resources.DateCreatedLabel)</th>
+                        <th>@Resources.PictureLabel</th>
+                        <th><i class="glyphicon glyphicon-share"></i></th>
                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (OfferIndexDocument item in Model.GridModel.Items)
+                {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.OfferType</td>
+                    <td>@item.EstateType</td>
+                    <td>@item.City - @item.CityRegion</td>
+                    <td>@item.Area</td>
+                    <td>@Html.Price(item.Price, item.DisplayCurrencyId)</td>
+                    <td>@item.Responsible</td>
+                    <td>@Html.Date(item.DateCreated)</td>
+                    <td><img src="/tmbs/@(item.Id).png" /></td>
+                    <td>@Html.ActionLink(Resources.ViewLabel, "Details", "Estates", new { Id = item.Id }, null)</td>
+                </tr>
                 }
-            </tbody>
-        </table>
-        @*</div>*@
+                </tbody>
+            </table>
+        </div>
         <div class="panel-footer">
             <div class="row">
                 <div class="col-sm-6">

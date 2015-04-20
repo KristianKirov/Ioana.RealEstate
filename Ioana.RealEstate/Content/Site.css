@@ -136,4 +136,13 @@ textarea.form-control {
 
 .table a.grid-header {
     color: black;
+    white-space: nowrap;
+}
+
+.table tbody > tr > td, .table tbody > tr > th {
+    vertical-align: middle;
+}
+
+.panel > .table-responsive > .table {
+    margin-bottom: 0;
 }

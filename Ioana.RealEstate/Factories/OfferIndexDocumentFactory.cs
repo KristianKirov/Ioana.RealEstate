@@ -1,4 +1,5 @@
-﻿using Ioana.RealEstate.Models;
+﻿using Ioana.RealEstate.Converters;
+using Ioana.RealEstate.Models;
 using Ioana.RealEstate.Models.Nomenclatures;
 using Ioana.RealEstate.Providers;
 using Ioana.RealEstate.Search.Models;
@@ -53,7 +54,7 @@ namespace Ioana.RealEstate.Factories
             OfferIndexDocument offerIndexDocument = new OfferIndexDocument()
             {
                 Id = estateModel.Id.Value,
-                Price = estateModel.Price.Value,
+                DisplayCurrencyId = estateModel.Currency.Id,
                 YearOfConstruction = estateModel.YearOfConstruction,
                 Floor = estateModel.Floor.Value,
                 HasElevator = estateModel.HasElevator,
@@ -64,6 +65,8 @@ namespace Ioana.RealEstate.Factories
                 DateCreated = estateModel.DateCreated.Value
             };
 
+            CurrencyConverter currencyConverter = new CurrencyConverter();
+            offerIndexDocument.Price = currencyConverter.ToDefaultCurrency(estateModel.Price.Value, estateModel.Currency.Id);
             offerIndexDocument.OfferType = (await getOfferTypeTask).Name;
             offerIndexDocument.City = (await getCityTask).Name;
             offerIndexDocument.CityRegion = (await getCityRegionTask).Name;

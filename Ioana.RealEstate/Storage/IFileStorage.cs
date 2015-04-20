@@ -10,5 +10,9 @@ namespace Ioana.RealEstate.Storage
     public interface IFileStorage
     {
         Task<string> Store(Stream fileStream, string name);
+
+        Stream GetReadStream(string name);
+
+        Stream CreateWriteStream(string name);
     }
 }

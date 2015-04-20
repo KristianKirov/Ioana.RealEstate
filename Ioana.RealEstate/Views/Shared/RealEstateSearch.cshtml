@@ -22,6 +22,9 @@
                 @Html.TextBoxFor(m => m.PriceFrom, new { @class = "form-control", @type = "number" })
                 <span class="input-group-addon">@Resources.PriceToLabel</span>
                 @Html.TextBoxFor(m => m.PriceTo, new { @class = "form-control", @type = "number" })
+                <span class="input-group-addon">
+                    @Html.DropDownListFor(m => m.Currency.Id, Model.Currency.Items)
+                </span>
             </div>
             @Html.ValidationMessageFor(m => m.PriceFrom, Resources.PriceRangeErrorMessage)
             @Html.ValidationMessageFor(m => m.PriceTo, Resources.PriceRangeErrorMessage)
